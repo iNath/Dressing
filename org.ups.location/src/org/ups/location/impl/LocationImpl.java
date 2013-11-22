@@ -11,6 +11,7 @@ public class LocationImpl implements ILocation, Runnable{
 	
 	public LocationImpl(){
 		listeners = new ArrayList<ILocationListener>();
+		new Thread(this).start();
 	}
 	
 	public float getLatitude() {
@@ -53,7 +54,7 @@ public class LocationImpl implements ILocation, Runnable{
 			}
 			
 			try {
-				Thread.sleep(Math.round(Math.random() * 1000));
+				Thread.sleep(Math.round(Math.random() * 4000));
 			} catch (InterruptedException e) {
 				
 			}

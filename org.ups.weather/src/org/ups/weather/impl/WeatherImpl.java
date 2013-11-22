@@ -23,7 +23,7 @@ public class WeatherImpl implements IWeather {
 		this.locationService.addListener(new ILocationListener(){
 
 			public void locationChanged(float lan, float lon) {
-				
+				locationChangedHandler();
 			}
 		});
 	}

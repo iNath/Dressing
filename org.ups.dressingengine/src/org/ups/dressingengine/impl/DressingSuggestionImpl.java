@@ -57,6 +57,7 @@ public class DressingSuggestionImpl implements IDressingSuggestion {
 	}
 	
 	public void weatherChangedHandler(){
+		System.out.println("Weather changed detected ;) youpiiii");
 		for(int i=0;i<listeners.size();i++){
 			listeners.get(i).dressingSuggestionChanged(this);
 		}
