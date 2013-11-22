@@ -8,4 +8,5 @@ Bundle-Vendor: UPS
 Import-Package: org.osgi.framework;version="1.7.0"
 Bundle-ActivationPolicy: lazy
 Bundle-Activator: org.ups.location.utils.Activator
-Export-Package: org.ups.location
+Export-Package: org.ups.location,
+ org.ups.location.impl
