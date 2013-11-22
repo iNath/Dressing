@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import org.ups.location.ILocation;
 import org.ups.location.ILocationListener;
 
-public class LocationImpl implements ILocation{
+public class LocationImpl implements ILocation, Runnable{
 
 	ArrayList<ILocationListener> listeners;
 	
@@ -16,23 +16,49 @@ public class LocationImpl implements ILocation{
 	public float getLatitude() {
 		// TODO Auto-generated method stub
 		System.out.println("Location -> getLatitude call");
-		return 10;
+		return (float) 0.14;
 	}
 
 	public float getLongitude() {
 		// TODO Auto-generated method stub
 		System.out.println("Location -> getLongitude call");
-		return 0;
+		return (float) 0.10;
 	}
 
 	public void addListener(ILocationListener listener) {
 		// TODO Auto-generated method stub
 		System.out.println("Location -> addListener call");
+		listeners.add(listener);
 	}
 
 	public void removeListener(ILocationListener listener) {
 		// TODO Auto-generated method stub
 		System.out.println("Location -> removeListener call");
+		
+		for(int i=0;i<listeners.size();i++){
+			if(listener.equals(listeners.get(i))){
+				listeners.remove(i);
+				break;
+			}
+		}
+	}
+
+	public void run() {
+		
+		while(true){
+			
+			// On va déclencher les événements
+			for(int i=0;i<listeners.size();i++){
+				listeners.get(i).locationChanged(this.getLatitude(), this.getLongitude());
+			}
+			
+			try {
+				Thread.sleep(Math.round(Math.random() * 1000));
+			} catch (InterruptedException e) {
+				
+			}
+		}
+		
 	}
 
 }
