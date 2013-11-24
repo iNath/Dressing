@@ -1,7 +1,4 @@
-*.metadata
-*.settings
-*.project
-*.classpath
+.metadata
 org.ups.weather/bin/
 org.ups.location/bin/
 org.ups.dressingengine/bin/
