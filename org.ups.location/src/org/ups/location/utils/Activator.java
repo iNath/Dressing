@@ -1,11 +1,7 @@
 package org.ups.location.utils;
 
-import java.util.Dictionary;
-import java.util.Hashtable;
-
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
-import org.osgi.framework.ServiceReference;
 import org.ups.location.ILocation;
 import org.ups.location.impl.LocationImpl;
 

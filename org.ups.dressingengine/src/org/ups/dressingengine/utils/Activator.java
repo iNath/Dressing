@@ -2,7 +2,6 @@ package org.ups.dressingengine.utils;
 
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
-import org.ups.dressingengine.IDressingSuggestion;
 import org.ups.dressingengine.impl.DressingSuggestionImpl;
 import org.ups.weather.IWeather;
 
