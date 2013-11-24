@@ -10,3 +10,5 @@ Bundle-ActivationPolicy: lazy
 Bundle-Activator: org.ups.location.utils.Activator
 Export-Package: org.ups.location,
  org.ups.location.impl
+Bundle-ClassPath: javax.json-1.0.4.jar,
+ .

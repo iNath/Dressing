@@ -12,6 +12,7 @@ public class DressingSuggestionImpl implements IDressingSuggestion {
 
 	ArrayList<IDressingSuggestionListener> listeners;
 	IWeather weatherService;
+	boolean sunGlassesNeeded, umbrellaNeeded, coatNeeded;
 	
 	public DressingSuggestionImpl(IWeather weatherService){
 		listeners = new ArrayList<IDressingSuggestionListener>();
@@ -42,25 +43,61 @@ public class DressingSuggestionImpl implements IDressingSuggestion {
 	}
 
 	public boolean sunGlassesNeeded() {
-		// TODO Auto-generated method stub
+		if(this.weatherService.getCurrentWeather() == WeatherType.SHINY){
+			return true;
+		}
 		return false;
 	}
 
 	public boolean umbrellaNeeded() {
-		// TODO Auto-generated method stub
+		switch(this.weatherService.getCurrentWeather()){
+			case RAINY:
+			case SHOWERS: return true;
+			default: break;
+		}
 		return false;
 	}
 
 	public boolean coatNeeded() {
-		// TODO Auto-generated method stub
+		switch(this.weatherService.getCurrentWeather()){
+			case CLOUDY:
+			case RAINY:
+			case SHOWERS:
+			case SNOW: return true;
+			default: break;
+		}
 		return false;
 	}
 	
-	public void weatherChangedHandler(){
-		System.out.println("Weather changed detected ;) youpiiii");
-		for(int i=0;i<listeners.size();i++){
-			listeners.get(i).dressingSuggestionChanged(this);
+	/**
+	 * Permet de savoir si les suggestions ont changé
+	 * @return boolean
+	 */
+	private boolean isSuggestionChanged(){
+		return this.umbrellaNeeded != this.umbrellaNeeded()
+				|| this.sunGlassesNeeded != this.sunGlassesNeeded()
+				|| this.coatNeeded != this.coatNeeded();
+	}
+	
+	private void weatherChangedHandler(){
+		this.log("Weather change detected");
+		
+		if(this.isSuggestionChanged()){
+			this.coatNeeded = this.coatNeeded();
+			this.sunGlassesNeeded = this.sunGlassesNeeded();
+			this.umbrellaNeeded = this.umbrellaNeeded();
+			// On notifie les listeners
+			for(int i=0;i<listeners.size();i++){
+				listeners.get(i).dressingSuggestionChanged(this);
+			}
+			
+			this.log("Coat: " + this.coatNeeded + " SunGlasses: " + this.sunGlassesNeeded() + " Umbrella: " + this.umbrellaNeeded());
 		}
 	}
 
+	
+	private void log(String str){
+		System.out.println("[Dressing] " + str);
+	}
+	
 }
