@@ -53,28 +53,6 @@ public class WeatherImpl implements IWeather, Runnable {
 	}
 
 	public WeatherType getCurrentWeather() {
-		
-		WeatherType weather;
-		switch((int)Math.floor(Math.random()*6)){
-			case 0:
-				 weather=WeatherType.CLOUDY;
-				 break;
-			case 1:
-				 weather=WeatherType.RAINY;
-				 break;
-			case 2:
-				 weather=WeatherType.SHINY;
-				 break;
-			case 3:
-				 weather=WeatherType.SHOWERS;
-				 break;
-			case 4:
-				 weather=WeatherType.SNOW;
-				 break;
-			default:
-				 weather=WeatherType.UNKNOWN;
-		}
-		
 		return weather;
 	}
 
