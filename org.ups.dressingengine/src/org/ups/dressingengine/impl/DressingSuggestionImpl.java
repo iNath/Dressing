@@ -91,7 +91,11 @@ public class DressingSuggestionImpl implements IDressingSuggestion {
 				listeners.get(i).dressingSuggestionChanged(this);
 			}
 			
-			this.log("Coat: " + this.coatNeeded + " SunGlasses: " + this.sunGlassesNeeded() + " Umbrella: " + this.umbrellaNeeded());
+			if(this.weatherService.getCurrentWeather() != WeatherType.UNKNOWN){
+				this.log("Coat: " + this.coatNeeded + " SunGlasses: " + this.sunGlassesNeeded() + " Umbrella: " + this.umbrellaNeeded());
+			} else {
+				this.log("[Erreur] Temps inconnu, impossible de proposer une suggestion");
+			}
 		}
 	}
 
