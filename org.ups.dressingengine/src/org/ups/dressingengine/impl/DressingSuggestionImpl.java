@@ -80,7 +80,7 @@ public class DressingSuggestionImpl implements IDressingSuggestion {
 	}
 	
 	private void weatherChangedHandler(){
-		this.log("Weather change detected");
+		this.log("Weather change detected: " + this.weatherService.getCurrentWeather());
 		
 		if(this.isSuggestionChanged()){
 			this.coatNeeded = this.coatNeeded();

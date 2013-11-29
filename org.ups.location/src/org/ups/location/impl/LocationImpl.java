@@ -58,8 +58,8 @@ public class LocationImpl implements ILocation, Runnable{
 			JsonReader rdr = Json.createReader(is);
 					
 			JsonObject obj = rdr.readObject();
-			float newLatitude = obj.getJsonNumber("latitude").longValue();
-			float newLongitude = obj.getJsonNumber("longitude").longValue();
+			float newLatitude = (float) obj.getJsonNumber("latitude").doubleValue();
+			float newLongitude = (float) obj.getJsonNumber("longitude").doubleValue();
 			
 			if(this.latitude != newLatitude && this.longitude != newLongitude){
 				this.latitude = newLatitude;

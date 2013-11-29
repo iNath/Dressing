@@ -90,6 +90,8 @@ public class WeatherImpl implements IWeather, Runnable {
 				}
 			}
 			
+			//this.log("Id temps trouvé à la location " +locationService.getLatitude()+ " : " + locationService.getLongitude() + " : " + previsionId);
+			
 		} catch (IOException e) {
 			this.log("Erreur à l'appel de l'api");
 		}
